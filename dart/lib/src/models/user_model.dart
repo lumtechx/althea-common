@@ -123,21 +123,43 @@ class Profile extends Equatable {
 
 class ProfilePicture extends Equatable {
   final String url;
+  final String? hash;
+  final String? cloudId;
 
-  const ProfilePicture({required this.url});
+  const ProfilePicture({
+    required this.url,
+    this.hash,
+    this.cloudId,
+  });
 
   factory ProfilePicture.fromJson(Map<String, dynamic> json) {
-    return ProfilePicture(url: json['url']);
+    return ProfilePicture(
+      url: json['url'] as String,
+      hash: json['hash'] as String?,
+      cloudId: json['cloudId'] as String?,
+    );
   }
 
-  Map<String, dynamic> toJson() => {'url': url};
+  Map<String, dynamic> toJson() => {
+        'url': url,
+        'hash': hash,
+        'cloudId': cloudId,
+      };
 
-  ProfilePicture copyWith({String? url}) {
-    return ProfilePicture(url: url ?? this.url);
+  ProfilePicture copyWith({
+    String? url,
+    String? hash,
+    String? cloudId,
+  }) {
+    return ProfilePicture(
+      url: url ?? this.url,
+      hash: hash ?? this.hash,
+      cloudId: cloudId ?? this.cloudId,
+    );
   }
 
   @override
-  List<Object?> get props => [url];
+  List<Object?> get props => [url, hash, cloudId];
 }
 
 class Academic extends Equatable {

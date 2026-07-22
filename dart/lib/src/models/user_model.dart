@@ -20,8 +20,7 @@ class UserData extends ProfileBase with EquatableMixin {
     super.contact,
   });
 
-  factory UserData.fromJson(
-      Map<String, dynamic> json, DateTime? Function(dynamic value) dateParser) {
+  factory UserData.fromJson(Map<String, dynamic> json) {
     return UserMapper.fromMap(json);
   }
 
@@ -57,12 +56,9 @@ class UserData extends ProfileBase with EquatableMixin {
     );
   }
 
+  @override
   UserDetail toUserDetail() {
-    return UserDetail(
-      uploadedBy: displayName,
-      uploadedById: uid,
-      roles: status.roles,
-    );
+    return UserMapper.toUserDetail(this);
   }
 
   @override
@@ -311,8 +307,7 @@ class Status extends Equatable {
     this.blockedUsers,
   });
 
-  factory Status.fromJson(
-      Map<String, dynamic> json, DateTime? Function(dynamic value) dateParser) {
+  factory Status.fromJson(Map<String, dynamic> json) {
     return UserStatusMapper.fromMap(json);
   }
 
@@ -342,8 +337,7 @@ class BlockedData extends Equatable {
 
   const BlockedData({required this.blockedAt, required this.blocked});
 
-  factory BlockedData.fromJson(
-      Map<String, dynamic> map, DateTime? Function(dynamic value) dateParser) {
+  factory BlockedData.fromJson(Map<String, dynamic> map) {
     return BlockedDataMapper.fromMap(map);
   }
 
@@ -377,6 +371,10 @@ sealed class ProfileBase extends Equatable {
     required this.status,
   });
 
+  UserDetail toUserDetail() {
+    return UserMapper.toUserDetail(this);
+  }
+
   @override
   List<Object?> get props => [
         uid,
@@ -398,8 +396,7 @@ class UserProfileData extends ProfileBase with EquatableMixin {
     super.contact,
   });
 
-  factory UserProfileData.fromJson(
-      Map<String, dynamic> json, DateTime? Function(dynamic value) dateParser) {
+  factory UserProfileData.fromJson(Map<String, dynamic> json) {
     return UserMapper.profileDataFromMap(json);
   }
 }

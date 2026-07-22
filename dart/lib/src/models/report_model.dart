@@ -130,7 +130,7 @@ class SubmittedReport {
     this.courseCode,
   });
 
-  factory SubmittedReport.fromMap(Map<String, dynamic> map, DateTime? Function(dynamic value) dateParser) {
+  factory SubmittedReport.fromMap(Map<String, dynamic> map) {
     return ReportMapper.fromMap(map);
   }
 

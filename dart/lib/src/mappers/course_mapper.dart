@@ -2,15 +2,12 @@ import '../models/course_model.dart';
 import '../utils/date_time_utils.dart';
 
 class CourseMapper {
-  static Course fromMap(
-      Map<String, dynamic> map, [DateTime? Function(dynamic value)? dateParser]) {
+  static Course fromMap(Map<String, dynamic> map) {
     return Course(
       courseCode: map['courseCode'] as String,
       courseCredit: map['courseCredit'] as int,
       courseName: map['courseName'] as String,
-      lastAccessed: dateParser != null 
-          ? dateParser(map['lastAccessed']) 
-          : DateTimeUtils.parse(map['lastAccessed']),
+      lastAccessed: DateTimeUtils.parse(map['lastAccessed']),
       lecturerName: map['lecturerName'] as String?,
       lecturerEmail: map['lecturerEmail'] as String?,
     );

@@ -29,7 +29,7 @@ class ResourceMapper {
       'type': resource.type,
       'fileType': resource.fileType,
       'uploader': resource.uploader.toMap(),
-      'uploadDate': resource.uploadDate, // DateTime
+      'uploadDate': resource.uploadDate,
       'courseCode': resource.courseCode,
       'url': resource.url.toJson(),
       if (resource.size != null) 'size': resource.size,

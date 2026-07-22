@@ -23,8 +23,7 @@ class ClassResource extends Resource {
     super.thumbnailUrl,
   });
 
-  factory ClassResource.fromMap(
-      Map<String, dynamic> map, DateTime? Function(dynamic value) dateParser) {
+  factory ClassResource.fromMap(Map<String, dynamic> map) {
     return ResourceMapper.classResourceFromMap(map);
   }
 

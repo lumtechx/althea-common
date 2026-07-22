@@ -86,8 +86,7 @@ class QuizGenerationRequest extends Equatable {
   String get formattedCreatedAt =>
       DateFormat('MMM d, yyyy \'at\' h:mm a').format(createdAt);
 
-  factory QuizGenerationRequest.fromMap(
-      Map<String, dynamic> map, DateTime? Function(dynamic value) dateParser) {
+  factory QuizGenerationRequest.fromMap(Map<String, dynamic> map) {
     return QuizRequestMapper.fromMap(map);
   }
 

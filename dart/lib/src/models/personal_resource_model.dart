@@ -14,7 +14,7 @@ class PersonalResource extends Resource {
     required super.tag,
   });
 
-  factory PersonalResource.fromMap(Map<String, dynamic> map, DateTime? Function(dynamic value) dateParser) {
+  factory PersonalResource.fromMap(Map<String, dynamic> map) {
     return ResourceMapper.personalResourceFromMap(map);
   }
 

@@ -22,8 +22,8 @@ class AppNotification {
     this.actions,
   });
 
-  factory AppNotification.fromMap(Map<String, dynamic> map, bool isRead,
-      NotificationType type, DateTime? Function(dynamic value) dateParser) {
+  factory AppNotification.fromMap(
+      Map<String, dynamic> map, bool isRead, NotificationType type) {
     return NotificationMapper.fromMap(map, isRead, type);
   }
 

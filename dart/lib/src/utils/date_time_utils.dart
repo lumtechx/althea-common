@@ -7,7 +7,7 @@ class DateTimeUtils {
     if (value is DateTime) return value;
     if (value is String) return DateTime.tryParse(value);
     if (value is int) return DateTime.fromMillisecondsSinceEpoch(value);
-    
+
     // Check for Firestore Timestamp or other objects with toDate() dynamically
     try {
       return value.toDate();

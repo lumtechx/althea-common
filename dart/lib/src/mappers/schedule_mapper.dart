@@ -2,19 +2,14 @@ import '../models/schedule.dart';
 import '../utils/date_time_utils.dart';
 
 class ScheduleMapper {
-  static Schedule fromMap(
-      Map<String, dynamic> map, [DateTime? Function(dynamic value)? dateParser]) {
+  static Schedule fromMap(Map<String, dynamic> map) {
     return Schedule(
       id: map['id'],
       type: courseEventTypeFromString(map['type'] as String),
       courseName: map['courseName'] as String?,
       title: map['title'] as String,
-      dateTime: dateParser != null 
-          ? dateParser(map['dateTime'])! 
-          : DateTimeUtils.parse(map['dateTime'])!,
-      endTime: dateParser != null 
-          ? dateParser(map['endTime']) 
-          : DateTimeUtils.parse(map['endTime']),
+      dateTime: DateTimeUtils.parse(map['dateTime'])!,
+      endTime: DateTimeUtils.parse(map['endTime']),
       location: map['location'] as String?,
       notes: map['notes'] as String?,
     );

@@ -1,3 +1,4 @@
+import '../models/resource_model.dart';
 import '../models/user_model.dart';
 import '../utils/date_time_utils.dart';
 
@@ -13,6 +14,15 @@ class UserMapper {
       academic: Academic.fromJson(map['academic']),
       contact: map['contact'] != null ? Contact.fromJson(map['contact']) : null,
       status: UserStatusMapper.fromMap(map['status']),
+    );
+  }
+
+  static UserDetail toUserDetail(ProfileBase user) {
+    return UserDetail(
+      uploadedBy: user.displayName,
+      uploadedById: user.uid,
+      roles: user.status.roles,
+      profilePicUrl: user.profile?.profilePicture?.url,
     );
   }
 

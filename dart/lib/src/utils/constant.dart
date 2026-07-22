@@ -1,0 +1,1 @@
+const List<String> upgradableRoles = ['Course Representative', 'Moderator'];

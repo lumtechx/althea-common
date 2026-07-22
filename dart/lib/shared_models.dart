@@ -33,6 +33,7 @@ export 'src/mappers/notification_mapper.dart';
 export 'src/mappers/resource_mapper.dart';
 export 'src/mappers/post_mapper.dart';
 export 'src/mappers/timetable_mapper.dart';
+export 'src/mappers/onboarding_directory_mapper.dart';
 
 // Utils
 export 'src/utils/string_extension.dart';

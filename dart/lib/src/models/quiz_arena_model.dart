@@ -30,6 +30,7 @@ class ArenaQuestion {
   final List<String> options;
   final num points;
   final int timeLimitSeconds;
+  final dynamic correctAnswer;
 
   ArenaQuestion({
     required this.id,
@@ -38,6 +39,7 @@ class ArenaQuestion {
     required this.options,
     required this.points,
     required this.timeLimitSeconds,
+    required this.correctAnswer,
   });
 }
 

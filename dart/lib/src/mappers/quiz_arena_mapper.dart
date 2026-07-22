@@ -51,6 +51,7 @@ class QuizArenaMapper {
       options: List<String>.from(map['options'] ?? []),
       points: map['points'] ?? 0,
       timeLimitSeconds: map['timeLimitSeconds'] ?? 0,
+      correctAnswer: map['correctAnswer'],
     );
   }
 
@@ -62,6 +63,7 @@ class QuizArenaMapper {
       'options': question.options,
       'points': question.points,
       'timeLimitSeconds': question.timeLimitSeconds,
+      'correctAnswer': question.correctAnswer,
     };
   }
 

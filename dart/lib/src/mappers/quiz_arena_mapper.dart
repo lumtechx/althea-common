@@ -117,4 +117,31 @@ class QuizArenaMapper {
       score: map['score'] ?? 0,
     );
   }
+
+  static QuizAttempt quizAttemptFromMap(Map<String, dynamic> map) {
+    return QuizAttempt(
+      userId: map['userId'] as String? ?? '',
+      startedAt: DateTimeUtils.parse(map['startedAt']) ?? DateTime.now(),
+      completedAt: DateTimeUtils.parse(map['completedAt']),
+      scoreEarned: map['scoreEarned'] as num?,
+    );
+  }
+
+  static Map<String, dynamic> quizAttemptToFirestore(QuizAttempt attempt) {
+    return {
+      'userId': attempt.userId,
+      'startedAt': attempt.startedAt, // DateTime
+      if (attempt.completedAt != null) 'completedAt': attempt.completedAt,
+      if (attempt.scoreEarned != null) 'scoreEarned': attempt.scoreEarned,
+    };
+  }
+
+  static Map<String, dynamic> quizAttemptToMap(QuizAttempt attempt) {
+    return {
+      'userId': attempt.userId,
+      'startedAt': attempt.startedAt.toIso8601String(), // String
+      if (attempt.completedAt != null) 'completedAt': attempt.completedAt!.toIso8601String(),
+      if (attempt.scoreEarned != null) 'scoreEarned': attempt.scoreEarned,
+    };
+  }
 }

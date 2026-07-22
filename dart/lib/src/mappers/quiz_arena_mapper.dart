@@ -11,6 +11,9 @@ class QuizArenaMapper {
       totalTimeSeconds: map['totalTimeSeconds'] ?? 0,
       maxScore: map['maxScore'] ?? 0,
       questionCount: map['questionCount'] ?? 0,
+      questions: (map['questions'] as List<dynamic>)
+          .map((e) => arenaQuestionFromMap(e as Map<String, dynamic>))
+          .toList(),
     );
   }
 
@@ -23,6 +26,7 @@ class QuizArenaMapper {
       'totalTimeSeconds': quiz.totalTimeSeconds,
       'maxScore': quiz.maxScore,
       'questionCount': quiz.questionCount,
+      'questions': quiz.questions.map((q) => arenaQuestionToMap(q)).toList(),
     };
   }
 
@@ -35,6 +39,7 @@ class QuizArenaMapper {
       'totalTimeSeconds': quiz.totalTimeSeconds,
       'maxScore': quiz.maxScore,
       'questionCount': quiz.questionCount,
+      'questions': quiz.questions.map((q) => arenaQuestionToMap(q)).toList(),
     };
   }
 
@@ -68,7 +73,8 @@ class QuizArenaMapper {
     );
   }
 
-  static Map<String, dynamic> leaderboardEntryToFirestore(LeaderboardEntry entry) {
+  static Map<String, dynamic> leaderboardEntryToFirestore(
+      LeaderboardEntry entry) {
     return {
       'userId': entry.userId,
       'score': entry.score,
@@ -84,7 +90,8 @@ class QuizArenaMapper {
     };
   }
 
-  static CurrentUserLeaderboard? currentUserLeaderboardFromMap(Map<String, dynamic>? map) {
+  static CurrentUserLeaderboard? currentUserLeaderboardFromMap(
+      Map<String, dynamic>? map) {
     if (map == null) return null;
     return CurrentUserLeaderboard(
       rank: map['rank'] ?? 0,
@@ -93,7 +100,8 @@ class QuizArenaMapper {
     );
   }
 
-  static Map<String, dynamic>? currentUserLeaderboardToFirestore(CurrentUserLeaderboard? current) {
+  static Map<String, dynamic>? currentUserLeaderboardToFirestore(
+      CurrentUserLeaderboard? current) {
     if (current == null) return null;
     return {
       'rank': current.rank,
@@ -102,7 +110,8 @@ class QuizArenaMapper {
     };
   }
 
-  static Map<String, dynamic>? currentUserLeaderboardToMap(CurrentUserLeaderboard? current) {
+  static Map<String, dynamic>? currentUserLeaderboardToMap(
+      CurrentUserLeaderboard? current) {
     if (current == null) return null;
     return {
       'rank': current.rank,
@@ -111,7 +120,8 @@ class QuizArenaMapper {
     };
   }
 
-  static ArenaSubmissionResult arenaSubmissionResultFromMap(Map<String, dynamic> map) {
+  static ArenaSubmissionResult arenaSubmissionResultFromMap(
+      Map<String, dynamic> map) {
     return ArenaSubmissionResult(
       message: map['message'] ?? '',
       score: map['score'] ?? 0,
@@ -140,7 +150,8 @@ class QuizArenaMapper {
     return {
       'userId': attempt.userId,
       'startedAt': attempt.startedAt.toIso8601String(), // String
-      if (attempt.completedAt != null) 'completedAt': attempt.completedAt!.toIso8601String(),
+      if (attempt.completedAt != null)
+        'completedAt': attempt.completedAt!.toIso8601String(),
       if (attempt.scoreEarned != null) 'scoreEarned': attempt.scoreEarned,
     };
   }

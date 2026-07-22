@@ -9,6 +9,7 @@ class ArenaQuiz {
   final int totalTimeSeconds;
   final num maxScore;
   final int questionCount;
+  final List<ArenaQuestion> questions;
 
   ArenaQuiz({
     required this.id,
@@ -18,6 +19,7 @@ class ArenaQuiz {
     required this.totalTimeSeconds,
     required this.maxScore,
     required this.questionCount,
+    required this.questions,
   });
 }
 
